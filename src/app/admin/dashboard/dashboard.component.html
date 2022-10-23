@@ -1,0 +1,27 @@
+
+    <div class="container py-5 h-100">
+      <h1 class="text-center">Profils</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>email</th>
+            <th>telephone</th>
+            <th>Linked In</th>
+            <th>PieceJointe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cond of condidat">
+            <th>{{cond.id}}</th>
+            <td>{{cond.nom}}</td>
+            <td>{{cond.email}}</td>
+            <td>{{cond.telephone}}</td>
+            <td>{{cond.linkedIn}}</td>
+            <td><a href="#">{{cond.file}}</a></td>
+            <td><button class="btn btn-danger btn-sm" (click)="deleteData(cond.id)">Supprimer</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
