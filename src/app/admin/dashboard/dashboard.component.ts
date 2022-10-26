@@ -8,12 +8,14 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+cond:any
   condidat:any;
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
-    this.getCondidatData();
+    // this.getCondidatData();
+    this.condidat=JSON.parse(localStorage.getItem('candidats'||'[]'))
+    console.log(this.condidat)
   }
 
   getCondidatData(){

@@ -1,6 +1,8 @@
 export class Condidat {
+    id:any;
+    profil:any;
     nom:any;
     email:any;
-    profil:any;
+    linkedIn:any;
     file:any;
 }
