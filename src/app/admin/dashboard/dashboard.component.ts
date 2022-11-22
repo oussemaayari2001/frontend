@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../service/data.service';
-import { Injectable } from '@angular/core';
+import { Condidat } from 'src/app/models/condidat.model';
+
+import { CandidatService } from 'src/app/service/candidat.service';
+import { SendmailService } from 'src/app/service/sendmail.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,27 +10,38 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-cond:any
-  condidat:any;
-  constructor(private dataService:DataService) { }
 
+  constructor(private candidatSer:CandidatService,private http:SendmailService) { }
+  condidats:Condidat[]
+cand:Condidat
   ngOnInit(): void {
-    // this.getCondidatData();
-    this.condidat=JSON.parse(localStorage.getItem('candidats'||'[]'))
-    console.log(this.condidat)
+ this.getCondidatData()
+ 
   }
+// this.candidatSer.deleteCandidat(id).subscribe(res=>{
+   // this.getCondidatData()
+ // })
+  Accepter(c){
+   console.log( c["email"]);
+   this.http.sendEmail( c).subscribe(
+      data => {
+        let res:any = data; 
+        console.log(
+          `👏 > 👏 > 👏 > 👏 ${c.nom} is successfully register and mail has been sent with ${res} }`
+        );
+      },
+      err => {
+        console.log(err);
+       
+      }
+    );
 
+  }
   getCondidatData(){
-    this.dataService.getData().subscribe(res => {
-      this.condidat = res;
-    });
+       this.candidatSer.getCandidats().subscribe(data=>this.condidats=data)
+    };
   }
 
-  deleteData(id){
-    // console.log(id);
-    this.dataService.deleteData(id).subscribe(res => {
-      this.getCondidatData();
-    })
-  }
 
-}
+
+

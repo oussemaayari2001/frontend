@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Condidat } from '../../models/condidat.model';
-import { NgModule } from '@angular/core';
-import { DataService } from '../../service/data.service';
-import { DashboardComponent } from 'src/app/admin/dashboard/dashboard.component';
-import { ToastrService } from 'ngx-toastr';
+import { Annonce } from 'src/app/models/annonce';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AnnonceService } from 'src/app/service/annonce.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -11,24 +9,28 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PostComponent implements OnInit {
 
-  @ViewChild("dashboard") dashboard: DashboardComponent;
-  condidat = new Condidat();
-  selectedType = 'openType';
-  data:any;
+  annonce = new Annonce();
+  form: FormGroup;
+ 
 
-onChange(event) {
-  this.selectedType = event.target.value;
-}
-  constructor(private dataService:DataService, private toastr: ToastrService) { }
+  constructor(private f:FormBuilder,private annonceSer:AnnonceService) { }
 
   ngOnInit(): void {
+    this.form=this.f.group({
+      titre:[''],
+      poste:[''],
+      type_emploi:[''],
+      mots_cles:[''],
+      niveau:[''],
+      langue:[''],
+      description:[''],
+      experience:['']
+    })
   }
 
   insertData(){
-    //  console.log('hello');
-     this.dataService.insertData(this.condidat).subscribe( res => {
-      //  console.log(res);
-       this.dashboard.getCondidatData();
-     })
+    this.annonceSer.addAnnonce(this.annonce).subscribe(data=>console.log(data));
+  
+   
   }
 }

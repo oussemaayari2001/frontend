@@ -5,50 +5,49 @@
           <h2 class="title">Poster</h2>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="insertData()">
+          <form #form="ngForm">
             <div class="form-row">
               <div class="name">Titre</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="Mohamed Ben Mohamed"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="titre"  [(ngModel)]="annonce.titre">
               </div>
             </div>
             <div class="form-row">
-              <div class="name">Postes vacants</div>
+              <div class="name">Postes disponibles</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="3 postes ouverts"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="poste" placeholder="3 postes ouverts"
+                  [(ngModel)]="annonce.poste">
               </div>
             </div>
             <div class="form-row">
               <div class="name">Type d'emploi désiré</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="CDD, Temps plein, Contrat al Karama, SIVP"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="type" placeholder="CDD, Temps plein, Contrat al Karama, SIVP"
+                  [(ngModel)]="annonce.type_emploi">
               </div>
             </div>
 
             <div class="form-row">
               <div class="name">Experience</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="1 à 3 ans"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="experience" placeholder="1 à 3 ans"
+                  [(ngModel)]="annonce.experience">
               </div>
             </div>
 
             <div class="form-row">
               <div class="name">Niveau d'étude</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="Licence, Bac + 3"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="niveau" placeholder="Licence, Bac + 3"
+                  [(ngModel)]="annonce.niveau">
               </div>
             </div>
 
             <div class="form-row">
               <div class="name">Langue</div>
               <div class="value">
-                <input class="input--style-6" type="text" name="nom" placeholder="Français"
-                  [(ngModel)]="condidat.nom">
+                <input class="input--style-6" type="text" name="langue" placeholder="Français"
+                  [(ngModel)]="annonce.langue">
               </div>
             </div>
 
@@ -56,7 +55,7 @@
               <div class="name">Description de l'emploi</div>
               <div class="value">
                 <input class="input--style-6" type="text" name="nom" placeholder="Votre mission consistera à : Rédiger des spécifications techniques..."
-                  [(ngModel)]="condidat.nom">
+                  [(ngModel)]="annonce.description">
               </div>
             </div>
             
@@ -66,97 +65,16 @@
               </div>
               <div class="value">
                 <div class="input-group">
-                  <select class="form-select" aria-label="Default select" name="profil" (change)="onChange($event)"
-                    [(ngModel)]="condidat.profil">
-                    <option selected>Selectionner votre poste</option>
-                    <option value="technicien">Framework</option>
-                    <option value="ingenieur">Langage</option>
-                    <option value="consultant">Logiciel</option>
-                  </select>
+                  <input class="input--style-6" type="text" name="mots_cles" placeholder="java, symfony, springboot...."
+                  [(ngModel)]="annonce.mots_cles">
                 </div>
               </div>
-            </div>
-  
-            <!-- form for technicien -->
-            <div *ngIf="selectedType == 'technicien'">
-              <div class="form-row">
-                <div class="value">
-                  <div class="input-group">
-                    <div class="form-check">
-                      <input type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Angular
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" value="" id="flexCheckChecked">
-                      <label class="form-check-label" for="flexCheckChecked">
-                        Symfony
-                      </label>
-                    </div>
-                  </div>
-                </div>
               </div>
-                  
-            </div>
-            <!-- end!! -->
   
-            <!-- form for Consultant -->
-            <div *ngIf="selectedType == 'ingenieur'">
-              <div class="form-row">
-                <div class="value">
-                  <div class="input-group">
-                    <div class="form-check">
-                      <input type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Python
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" value="" id="flexCheckChecked">
-                      <label class="form-check-label" for="flexCheckChecked">
-                        PHP
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Java
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- end!! -->
-                      <!-- form for Ingenieur -->
-                      <div *ngIf="selectedType == 'consultant'">
-                        <div class="form-row">
-                          <div class="value">
-                            <div class="input-group">
-                              <div class="form-check">
-                                <input type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  Power AMC
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  Adobe
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- end!! -->
-  
-          
           </form>
         </div>
         <div class="card-footer">
-          <button class="btn btn--radius-2 btn--blue-2" (click)="insertData()">Evoyer la postulation</button>
+          <button class="btn btn--radius-2 btn--blue-2" (click)="insertData()">ajouter l'annonce</button>
         </div>
       </div>
     </div>

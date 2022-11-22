@@ -1,11 +1,11 @@
 main{
     min-height: 100vh;
-    background-image: url(../../assets/bfi.png);
+    
     background-repeat: no-repeat;
     background-position: center;
-    background-color: black;
+    background-color:  #333;
     background-size: 400px;
-    color: white;
+    color: rgb(110, 101, 101);
 }
 
 a{

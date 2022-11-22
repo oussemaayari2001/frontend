@@ -4,21 +4,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th>id</th>
+          
             <th>Nom</th>
             <th>email</th>
             <th>Linked In</th>
             <th>PieceJointe</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cond of condidat">
-            <th>{{cond.id}}</th>
+          <tr *ngFor="let cond of condidats">
+          
             <td>{{cond.nom}}</td>
             <td>{{cond.email}}</td>
             <td>{{cond.linkedIn}}</td>
             <td><a href="#">{{cond.file}}</a></td>
-            <td><button class="btn btn-danger btn-sm" (click)="deleteData(cond.id)">Supprimer</button></td>
+            <td><button class="btn btn-danger " (click)="Accepter(cond)">Accepter</button>
+              <button class="btn btn-danger " (click)="refuser(cond)">refuser</button></td>
           </tr>
         </tbody>
       </table>
