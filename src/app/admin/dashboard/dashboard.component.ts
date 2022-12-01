@@ -9,24 +9,24 @@ import { SendmailService } from 'src/app/service/sendmail.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
   constructor(private candidatSer:CandidatService,private http:SendmailService) { }
   condidats:Condidat[]
-cand:Condidat
+  cand:Condidat
   ngOnInit(): void {
- this.getCondidatData()
- 
-  }
+  this.getCondidatData()
+ }
 // this.candidatSer.deleteCandidat(id).subscribe(res=>{
    // this.getCondidatData()
  // })
   Accepter(c){
-   console.log( c["email"]);
-   this.http.sendEmail( c).subscribe(
-      data => {
-        let res:any = data; 
-        console.log(
+  console.log( c["email"]);
+  this.http.sendEmail( c).subscribe(
+  data => {
+      let res:any = data; 
+      console.log(
           `👏 > 👏 > 👏 > 👏 ${c.nom} is successfully register and mail has been sent with ${res} }`
         );
       },

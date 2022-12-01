@@ -3,6 +3,8 @@ import { DataService } from '../../service/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthentificationService } from 'src/app/service/auth-service.service';
+import { TokenStorageService } from 'src/app/service/token-storage-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +12,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  username=''
   form : FormGroup;
   submitted = false;
   data : any;
   token : any;
 
-  constructor(private dataService : DataService, private toastr : ToastrService, 
-    private formBuilder : FormBuilder, private router : Router) { }
+  constructor(private authService: AuthentificationService, private tokenStorage: TokenStorageService,private fb:FormBuilder) { }
 
     loginForm(){
-      this.form = this.formBuilder.group({
+      this.form = this.fb.group({
         email : ['', [Validators.required, Validators.email]],
         password : ['', [Validators.required]]
       })
@@ -34,31 +39,30 @@ export class LoginComponent implements OnInit {
     return this.form.controls;
   }
 
-  submit(){
-    this.submitted = true;
-    if(this.form.invalid){
-      return;
-    }
-
-this.dataService.login(this.form.value).subscribe(res =>{
-  this.data = res;
-  // console.log(res);
-  if(this.data.status === 1){
-    this.token = this.data.data.token;
-    localStorage.setItem('token', this.token);
-    this.router.navigate(['/']);
-    this.toastr.success(JSON.stringify(this.data.message), JSON.stringify(this.data.code),{
-      timeOut : 2000,
-      progressBar : true
-    })
-  } else if(this.data.status === 0){
-    this.toastr.error(JSON.stringify(this.data.message), JSON.stringify(this.data.code),{
-      timeOut : 2000,
-      progressBar : true
-    })
+  submit(){  
+    this.authService.login(this.form.value).subscribe(
+      data => {
+       
+        
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        console.log('user >>>>',this.tokenStorage.getUser().nom);
+        this.username=data.nom
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        // if (this.isLoggedIn) {
+        //   this.reloadPage();
+        // }
+        
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
   }
-});
 
-}
-
+  reloadPage(): void {
+    window.location.reload();
+  }
 }

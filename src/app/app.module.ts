@@ -16,6 +16,9 @@ import { FormulaireComponent } from './condidat/formulaire/formulaire.component'
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PostComponent } from './admin/post/post.component';
+import { SignupComponent } from './admin/dashboard/signup/signup.component';
+import { GestionAnnonceComponent } from './admin/gestion-annonce/gestion-annonce.component';
+
 
 
 @NgModule({
@@ -29,6 +32,8 @@ import { PostComponent } from './admin/post/post.component';
     FooterComponent,
     AboutUsComponent,
     PostComponent,
+    SignupComponent,
+    GestionAnnonceComponent,
    
    
   ],

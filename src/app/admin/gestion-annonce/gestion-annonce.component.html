@@ -1,0 +1,63 @@
+
+
+
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+             
+              <div class="col-xl-15">
+                <div class="card-body p-md-5 text-black">
+                
+  
+                  <div class="container">
+                    <h1>Listes des Annonces</h1>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">titre</th>
+                            <th scope="col">motscles</th>
+                            <th scope="col">experience</th>
+                            <th scope="col">langue</th>
+                            <th scope="col">date d'ajout</th>
+                            <th scope="col">niveau</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                                  <tr *ngFor="let t of annonces"> 
+                                    <td>{{t.title}}</td>
+                                    <td>{{t.motscles}}</td>
+                                    <td>{{t.experience}}</td>
+                                    <td>{{t.langue}}</td>
+                                    <td>{{t.date_dajout}}</td>
+                                    <td>{{t.niveau}}</td>
+                                  </tr>
+                                 
+                        </tbody>
+                      
+                
+                
+                
+                </table>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
