@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthentificationService } from 'src/app/service/auth-service.service';
 import { TokenStorageService } from 'src/app/service/token-storage-service.service';
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   data : any;
   token : any;
 
-  constructor(private authService: AuthentificationService, private tokenStorage: TokenStorageService,private fb:FormBuilder) { }
+  constructor(private authService: AuthentificationService, private tokenStorage: TokenStorageService,private fb:FormBuilder,private router:Router) { }
 
     loginForm(){
       this.form = this.fb.group({
@@ -53,6 +53,12 @@ export class LoginComponent implements OnInit {
         // if (this.isLoggedIn) {
         //   this.reloadPage();
         // }
+        setTimeout(() => {
+            if (this.isLoggedIn) {
+          this.router.navigate(['/annonce'])
+        }
+          
+        }, 0);
         
       },
       err => {

@@ -1,0 +1,25 @@
+<div class="page-wrapper bg-dark p-t-100 p-b-50">
+    <div class="wrapper wrapper--w900">
+      <div class="card card-6">
+        <div class="card-heading">
+          <h2 class="title">Annonce</h2>
+        </div>
+        <div *ngFor="let t of Annonces">
+       
+            <h3 >{{t.titre}}</h3>
+            
+                <p class="card-text">
+                   poste : {{t.poste }} 
+                   , type d'emploi : {{t.type_emploi}}   
+                   , année d'expérience : {{t.experience}} ans
+                    , niveau d'études : {{t.niveau}} minimum
+                    , langue : {{t.langue}}<br>
+                    description : {{t.description}}<br>
+                    mots clées : <a class="btn btn-success"> {{t.mots_cles}} </a>
+                </p>
+                <a href="#"  class="btn btn-primary" routerLink="/add_candidat">postuler</a> 
+            
+   
+</div>
+</div></div></div>
+  

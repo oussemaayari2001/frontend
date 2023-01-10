@@ -7,4 +7,5 @@ export class Annonce {
     langue:any;
     description:any;
     mots_cles:any;
+  Candidats: any;
 }

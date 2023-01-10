@@ -13,10 +13,16 @@ export class CandidatService {
   addCandidat(c:Condidat):Observable<Condidat>{
     return this.http.post<Condidat>(URL,c);
     }
-  getCandidats():Observable<Condidat[]>{
-    return this.http.get<Condidat[]>(URL);
+  getCandidats(id:any):Observable<any[]>{
+    return this.http.get<any[]>(URL+'/'+id);
       }
+
+      getCandidat(id:any):Observable<any>{
+        return this.http.get<any>(URL+'/'+id);
+          }
+
   deleteCandidat(id:any){
     return this.http.delete(URL+"/"+id);
       }
+    
 }

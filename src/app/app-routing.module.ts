@@ -12,7 +12,7 @@ import { GestionAnnonceComponent } from './admin/gestion-annonce/gestion-annonce
 const routes: Routes = [
   {path:'acceuil', component:HomeComponent},
   {path:'add_candidat', component:FormulaireComponent},
-  {path:'profils', component:DashboardComponent},
+  {path:'profils/:id', component:DashboardComponent},
   {path:'about_us', component:AboutUsComponent},
   {path:'add_annonce', component:PostComponent},
   {path:'login', component:LoginComponent},

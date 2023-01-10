@@ -1,6 +1,4 @@
 
-
-
 <section class="h-100 bg-dark">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -17,23 +15,27 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">titre</th>
+                            <th scope="col" style="color:black ;">titre</th>
                             <th scope="col">motscles</th>
                             <th scope="col">experience</th>
                             <th scope="col">langue</th>
                             <th scope="col">date d'ajout</th>
                             <th scope="col">niveau</th>
+                            <th scope="col">Consulter</th>
                           </tr>
                         </thead>
                         <tbody>
                             
                                   <tr *ngFor="let t of annonces"> 
-                                    <td>{{t.title}}</td>
-                                    <td>{{t.motscles}}</td>
-                                    <td>{{t.experience}}</td>
-                                    <td>{{t.langue}}</td>
-                                    <td>{{t.date_dajout}}</td>
-                                    <td>{{t.niveau}}</td>
+                                    <td>{{t.annonce.titre}}</td>
+                                    <td>{{t.annonce.mots_cles}}</td>
+                                    <td>{{t.annonce.experience}}</td>
+                                    <td>{{t.annonce.langue}}</td>
+                                    <td>{{t.annonce.date_dajout}}</td>
+                                    <td>{{t.annonce.niveau}}</td>
+                                    <td><button class="btn btn-primary"  [routerLink]="['/profils',t.annonce._id]">
+                                      
+                                      Consulter Candidats</button></td>
                                   </tr>
                                  
                         </tbody>

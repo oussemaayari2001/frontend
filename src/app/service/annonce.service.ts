@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Annonce } from '../models/annonce';
 import { TokenStorageService } from './token-storage-service.service';
-const  URL="http://localhost:3000/annonce/";
+const  URLRh="http://localhost:3000/rh/annonces/";
+const  URL="http://localhost:3000/annonce";
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +18,14 @@ export class AnnonceService {
     return this.http.post<Annonce>(URL,a);
     }
 
-    getAnnonceByIdRh(id:any){
-      return this.http.get<Annonce[]>(URL+"/"+ id);
+    getIdAnnoncesByIdRh(idRh:any){
+      return this.http.get<any>(URLRh+"/"+ idRh);
       }
+
+      getAnnonce(id:any){
+        return this.http.get<any>(URL+"/"+ id)
+        }
+
 
      
       
